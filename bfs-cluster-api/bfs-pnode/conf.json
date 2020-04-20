@@ -1,0 +1,10 @@
+{
+	"port":"7003",
+	"absAFSDir":"/aos/ks/afs_bin/",
+	"afsProgram":"afs-x64",
+	"apiDataFolder":"afs_data",
+	"maxExecTime":60,
+	"trackRoots":["http://127.0.0.1:8203/"],
+	"log":true,
+	"tnDB":"http://47.75.155.127:8049/"
+}

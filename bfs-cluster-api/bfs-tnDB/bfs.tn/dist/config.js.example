@@ -1,0 +1,77 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const path = require("path");
+const utils_1 = require("./lib/utils");
+exports.datetimeFormat = 'yyyyMMddHHmmss';
+exports.dateFormat = 'yyyyMMdd';
+exports.hourFormat = 'HH';
+exports.linebreakRegex = /[\r\n]+/;
+exports.rsRegex = /;rs=(http:\/\/.+?)(?::\d+)?\/(\d+?)\/;/;
+exports.rsPubRegex = /;rs_pub=(http:\/\/.+?)(?::\d+)?\/(\d+?)\/;/;
+exports.hourJsonRegex = /^\d{2}\.json$/;
+exports.dateJsonRegex = /^\d{8}\.json$/;
+exports.afidRegex = /^(.{4})(.{12})(.{40})(.{32})(.{40})$/;
+exports.logDir = path.resolve(__dirname, '../logs/');
+exports.cacheDir = path.resolve(__dirname, '../cache/');
+exports.clustertxtPath = '/aos/cluster/cluster.txt';
+exports.tnDb = 'tn';
+// 保留daily dump多少天
+exports.days4DayDump = 10;
+exports.field2IdType = {
+    afs: 'afid',
+    arfs: 'afid',
+    agfs: 'agfid',
+};
+exports.fields = Object.keys(exports.field2IdType);
+exports.oldPrefix2fileId = {
+    afs_arfs: 'afid',
+    agfs: 'agfid',
+};
+exports.thisCluster = utils_1.default.getCluster(exports.clustertxtPath);
+/*
+下面需要修改
+下面需要修改
+下面需要修改
+*/
+// mongodb，需要root账户
+// https://docs.mongodb.com/manual/reference/connection-string/
+exports.mongodbUri = 'mongodb://bfdb:test123@127.0.0.1:27017/admin';
+exports.knexConfig = {
+    client: 'mysql',
+    // mysql，需要管理员账户
+    connection: {
+        host: '127.0.0.1',
+        port: 3306,
+        user: 'bfdb',
+        password: 'test123',
+        database: 'mysql',
+    },
+    // 这个可以忽略
+    pool: {
+        afterCreate(conn, done) {
+            console.log('afterCreate');
+            conn.query('SELECT 1', e => {
+                done(e, conn);
+            });
+        },
+    },
+};
+// 本API端口，按需修改
+exports.port = 8049;
+// 本集群rnode端口，询问部署rnode的人
+exports.rnPort = 8202;
+// 本集群pnode外网地址，询问部署pnode的人，array格式
+exports.pnodes = ['http://192.168.6.2:8201'];
+// 本机外网地址，其他集群需要访问本API，需考虑反向代理等因素
+exports.selfUrl = 'http://192.168.6.4:8103';
+/*
+启动之后先通知这个tn，详情询问初始集群负责人
+如果自己是初始，则留空
+*/
+exports.firstTn = {
+    cluster: '',
+    url: '',
+};
+// cluster: 'AABB',
+// url: 'http://192.168.6.4:8103',
+//# sourceMappingURL=config.js.map

@@ -1,0 +1,9 @@
+{
+	"port":"5144",
+	"absAFSDir":"/aos/ks/afs_1e/",
+	"afsProgram":"afs-x64",
+	"apiDataFolder":"afs_data",
+	"maxExecTime":60,
+	"rnid":"9237",
+	"Log":true
+}
