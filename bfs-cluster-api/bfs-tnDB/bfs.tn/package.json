@@ -24,7 +24,7 @@
     "@nestjs/core": "^6.11.11",
     "@nestjs/platform-express": "^6.11.11",
     "@nestjs/schedule": "^0.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.0",
     "date-fns": "^2.11.1",
